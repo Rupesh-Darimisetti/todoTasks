@@ -1,0 +1,12 @@
+.todo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: clamp(500px, 1000%, 50vw);
+}
+
+.todo:checked {
+    display: flex;
+    flex-direction: row;
+    text-decoration: line-through;
+}
