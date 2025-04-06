@@ -6,11 +6,16 @@ import './todoitems.css';
 function App() {
   const [tasks, setTasks] = useState([])
   const [task, setTask] = useState('');
+  const [toggle, setToggle] = useState(false);
+  const toggleChange = () => {
+    setToggle(!tasks.toggle)
+  }
 
   const addTasks = () => {
     let todoItem = {
       id: uuid(),
-      item: task
+      item: task,
+      isToggle: false
     }
     console.log(todoItem)
     // tasks.push(todoItem)
@@ -40,8 +45,8 @@ function App() {
       {/* <TodoItems todoElements={tasks} onDeleteITem={deleteTask} /> */}
       {tasks.map(data => (
         <div className='todo' key={data?.id}>
-          <input type='checkbox' value={data?.id} />
-          <p>{data?.item}</p>
+          <input type='checkbox' value={data?.id} id="item" onToggle={toggleChange} />
+          <label className='todo:checked' htmlFor="item">{data?.item}</label>
           <button onSubmit={() => deleteTask(data?.id)}>delete</button>
         </div>
       ))}
